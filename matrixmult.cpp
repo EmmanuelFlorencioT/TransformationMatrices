@@ -105,10 +105,6 @@ void initRotateZ(float degZ){
     rotZ[3][3] = 1;
 }
 
-void initPivot(float pivX, float pivY, float pivZ){
-    calcTransl(moveOrigin, pivX, pivY, pivZ);
-}
-
 void initBezier(float coords[12]){
     p1.x = coords[0];
     p1.y = coords[1];
@@ -144,6 +140,10 @@ void calcTransl(float mat[4][4], float movX, float movY, float movZ){
     mat[3][1] = 0;
     mat[3][2] = 0;
     mat[3][3] = 1;
+}
+
+void initPivot(float pivX, float pivY, float pivZ){
+    calcTransl(moveOrigin, pivX, pivY, pivZ);
 }
 
 void calcBezier(float t){
@@ -235,6 +235,7 @@ int main(){
     float ans[4];
     Vertex v;
     v.x = 5; v.y = 4; v.z = 1;
+    //this goes in Init()
     calcTransl(moveBack, 10.0/3, 4.0, 4.0/3);
     calcTransl(moveOrigin, -10.0/3, -4.0, -4.0/3);
 
